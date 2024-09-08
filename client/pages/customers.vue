@@ -213,7 +213,7 @@ const paginatedCustomers = computed(() => {
 });
 
 function toggleForm() {
-    showForm.value = !showForm.value;
+    showForm.value = !showForm.value;   
     if (!showForm.value) {
         editingIndex.value = null;
         resetCustomerForm();
