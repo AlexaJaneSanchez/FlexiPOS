@@ -11,6 +11,20 @@ class Product extends Model
     use HasFactory, Notifiable;
 
     /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'productID';
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = true;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -36,23 +50,17 @@ class Product extends Model
     protected $hidden = [];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast to native types.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'productcategory',
-            'productname',
-            'brandname',
-            'wholesaleunit',
-            'retailunit',
-            'retailqtyperwholesaleunit',
-            'reorderpoint',
-            'markup',
-            'isactive',
-            'quantityonhand',
-        ];
-    }
+    protected $casts = [
+        'wholesaleunit' => 'decimal:2',
+        'retailunit' => 'decimal:2',
+        'retailqtyperwholesaleunit' => 'integer',
+        'reorderpoint' => 'integer',
+        'markup' => 'decimal:2',
+        'isactive' => 'boolean',
+        'quantityonhand' => 'integer',
+    ];
 }

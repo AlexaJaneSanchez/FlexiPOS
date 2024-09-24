@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerStoreRequest;
+use App\Http\Requests\CustomerUpdateRequest;
 use App\Interface\Service\CustomerServiceInterface;
 use Illuminate\Http\Request;
 
@@ -19,11 +21,23 @@ class CustomerController extends Controller
         return $this->customerService->findCustomers();
     }
 
-    public function show() {}
+    public function show(int $customerID)
+    {
+        return $this->customerService->findCustomerById($customerID);
+    }
 
-    public function store() {}
+    public function store(CustomerStoreRequest $request)
+    {
+        return $this->customerService->createCustomer($request);
+    }
 
-    public function update() {}
+    public function update(CustomerUpdateRequest $request, int $customerid)
+    {
+        return $this->customerService->updateCustomer($request, $customerid);
+    }
 
-    public function destroy() {}
+    public function destroy(int $customerID)
+    {
+        return $this->customerService->removeCustomer($customerID);
+    }
 }

@@ -1,3 +1,4 @@
+
 <template>
     <div class="relative block">
         <div :class="props.isActive && 'opacity-20 pointer-events-none'">

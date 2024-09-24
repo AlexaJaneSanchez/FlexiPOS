@@ -8,6 +8,8 @@ interface ProductServiceInterface
 
     public function findProductById(int $id);
 
+    // public function findProdctByName(string $productname);
+
     public function createProduct(object $payload);
 
     public function updateProduct(object $payload, int $id);

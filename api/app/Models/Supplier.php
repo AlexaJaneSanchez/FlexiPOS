@@ -11,6 +11,20 @@ class Supplier extends Model
     use HasFactory, Notifiable;
 
     /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'supplierID';
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = true;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -21,10 +35,7 @@ class Supplier extends Model
         'address',
         'Telephone1',
         'Telephone2',
-        'contactPerson',
-        'isActive',
-        'created_at',
-        'updated_at',
+        'isactive',
     ];
 
     /**
@@ -35,22 +46,11 @@ class Supplier extends Model
     protected $hidden = [];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast to native types.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'supplierName',
-            'productname',
-            'address',
-            'Telephone1',
-            'Telephone2',
-            'contactPerson',
-            'isActive',
-            'created_at',
-            'updated_at',
-        ];
-    }
+    protected $casts = [
+        'isactive' => 'boolean',
+    ];
 }

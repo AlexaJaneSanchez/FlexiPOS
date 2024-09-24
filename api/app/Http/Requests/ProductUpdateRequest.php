@@ -23,17 +23,16 @@ class ProductUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'productcategory' => 'required',
-            'productname' => 'required',
-            'brandname' => 'required',
-            'supplierid' => 'required',
-            'wholesaleunit' => ['required', 'decimal:1,8'],
-            'retailunit' => ['required', 'decimal:1,8'],
-            'retailqtyperwholesaleunit' => 'required',
-            'reorderpoint' => 'required',
-            'markup' => 'required',
-            'isactive' => 'required',
-            'quantityonhand' => ['required', 'integer'],
+            'productcategory' => 'required|string|max:255',
+            'productname' => 'required|string|max:255',
+            'brandname' => 'required|string|max:255',
+            'wholesaleunit' => 'required|numeric|between:0,99999999999.99',  // Adjusted for decimal(15,2)
+            'retailunit' => 'required|numeric|between:0,99999999999.99',     // Adjusted for decimal(15,2)
+            'retailqtyperwholesaleunit' => 'required|integer',
+            'reorderpoint' => 'required|integer',
+            'markup' => 'required|numeric|between:0,99999.99',               // Adjusted for decimal(5,2)
+            'isactive' => 'required|boolean',
+            'quantityonhand' => 'required|integer',
         ];
     }
 }

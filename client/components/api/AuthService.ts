@@ -1,13 +1,13 @@
-import BaseAPIService from '~/components/api/BaseAPIService'
+import BaseAPIService from "./BaseAPIService";
 
 class AuthService extends BaseAPIService {
     async login(params: object): Promise<any> {
-        return await this.request(`/login`, 'POST', params)
+        return await this.request(`/login`, "POST", params);
     }
 
     async logout(): Promise<any> {
-        return await this.request(`/logout`, 'POST')
+        return await this.request(`/logout`, "POST");
     }
 }
 
-export const authService = new AuthService()
+export const authService = new AuthService();

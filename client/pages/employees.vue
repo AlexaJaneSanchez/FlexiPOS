@@ -4,7 +4,7 @@
            
         <main>
                <!-- Search and Add Product Button Container -->
-  <div class="relative flex items-center space-x-4 mt-3">
+                <div class="relative flex items-center space-x-4 mt-3">
                     <!-- Search Bar -->
                     <div class="relative flex flex-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
@@ -25,6 +25,7 @@
             <div v-if="showForm" class="fixed inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50">
                 <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
                     <form @submit.prevent="submitEmployee">
+                        <h>Employee Info</h>
                         <div class="grid grid-cols-1 gap-4">
                             <div class="flex items-center">
                                 <label for="employeeId" class="text-xxs font-medium text-gray-700 w-24">Employee ID</label>
@@ -37,10 +38,10 @@
                                 />
                             </div>
                             <div class="flex items-center">
-                                <label for="roleId" class="text-xxs font-medium text-gray-700 w-24">Role ID</label>
+                                <label for="userId" class="text-xxs font-medium text-gray-700 w-24">User ID</label>
                                 <input
-                                    id="roleId"
-                                    v-model="employee.roleId"
+                                    id="userId"
+                                    v-model="employee.userId"
                                     type="text"
                                     class="block flex-1 rounded-md border border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 text-sm px-3 py-2"
                                     required
@@ -67,19 +68,19 @@
                                 />
                             </div>
                             <div class="flex items-center">
-                                <label for="email" class="text-xxs font-medium text-gray-700 w-24">Email</label>
+                                <label for="designation" class="text-xxs font-medium text-gray-700 w-24">Designation</label>
                                 <input
-                                    id="email"
-                                    v-model="employee.email"
+                                    id="designation"
+                                    v-model="employee.designation"
                                     type="text"
                                     class="block flex-1 rounded-md border border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 text-sm px-3 py-2"
                                 />
                             </div>
                             <div class="flex items-center">
-                                <label for="phoneNumber" class="text-xxs font-medium text-gray-700 w-24">Phone Number</label>
+                                <label for="telephone" class="text-xxs font-medium text-gray-700 w-24">Phone Number</label>
                                 <input
-                                    id="phoneNumber"
-                                    v-model="employee.phoneNumber"
+                                    id="telephone"
+                                    v-model="employee.telephone"
                                     type="text"
                                     class="block flex-1 rounded-md border border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 text-sm px-3 py-2"
                                 />
@@ -120,24 +121,25 @@
                 <table class="min-w-full bg-white rounded-lg shadow-md mt-2 rounded-b-lg">
                     <thead>
                         <tr class="text-left">
-                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900 rounded-tl-lg">Employee ID</th>
-                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900">Role ID</th>
-                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900">First Name</th>
-                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900">Last Name</th>
-                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900">Email</th>
-                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900">Phone Number</th>
+                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900 rounded-tl-lg">employeeID</th>
+                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900">userID</th>
+                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900">firstName</th>
+                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900">lastName</th>
+                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900">telephone</th>
                             <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900">Status</th>
+                            <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900">Designation</th>
                             <th class="px-4 py-2 text-xxs font-semibold text-white bg-gray-900 rounded-tr-lg">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-gray-100">
                         <tr v-for="(employee, index) in paginatedEmployees" :key="index" class="border-t bg-gray-50">
                             <td class="px-4 py-2 text-xxs text-gray-700">{{ employee.employeeId }}</td>
-                            <td class="px-4 py-2 text-xxs text-gray-700">{{ employee.roleId }}</td>
+                            <td class="px-4 py-2 text-xxs text-gray-700">{{ employee.userId }}</td>
                             <td class="px-4 py-2 text-xxs text-gray-700">{{ employee.firstName }}</td>
                             <td class="px-4 py-2 text-xxs text-gray-700">{{ employee.lastName }}</td>
-                            <td class="px-4 py-2 text-xxs text-gray-700">{{ employee.email }}</td>
-                            <td class="px-4 py-2 text-xxs text-gray-700">{{ employee.phoneNumber }}</td>
+                            <td class="px-4 py-2 text-xxs text-gray-700">{{ employee.telephone }}</td>
+                            <td class="px-4 py-2 text-xxs text-gray-700">{{ employee.status }}</td>
+                            <td class="px-4 py-2 text-xxs text-gray-700">{{ employee.designation }}</td>
                             <td class="px-4 py-2 text-xxs text-gray-700">
                                 <span :class="{'text-green-500': employee.status === 'Active', 'text-red-500': employee.status === 'Inactive'}">
                                     {{ employee.status }}
@@ -199,20 +201,21 @@ import { PlusIcon } from '@heroicons/vue/24/outline';
 const showForm = ref(false);
 const employee = ref({
     employeeId: '',
-    roleId: '',
+    userId: '',
     firstName: '',
     lastName: '',
-    email: '',
-    phoneNumber: '',
+    telephone: '',
+    designation: '',
     status: 'Active'
 });
+
 const employees = ref<Array<{
     employeeId: string,
-    roleId: string,
+    userId: string,
     firstName: string,
     lastName: string,
-    email: string,
-    phoneNumber: string,
+    telephone: string,
+    designation: string,
     status: string
 }>>([]);
 
@@ -239,11 +242,11 @@ function toggleForm() {
 function resetEmployeeForm() {
     employee.value = {
         employeeId: '',
-        roleId: '',
+        userId: '',
         firstName: '',
         lastName: '',
-        email: '',
-        phoneNumber: '',
+        telephone: '',
+        designation: '',
         status: 'Active'
     };
 }
@@ -267,7 +270,7 @@ function isEmployeeFormValid() {
     return employee.value.firstName.trim() !== '' &&
            employee.value.lastName.trim() !== '' &&
            employee.value.employeeId.trim() !== '' &&
-           employee.value.roleId.trim() !== '';
+           employee.value.userId.trim() !== '';
 }
 
 function editEmployee(index: number) {
